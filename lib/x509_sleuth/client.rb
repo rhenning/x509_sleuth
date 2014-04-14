@@ -4,7 +4,7 @@ require "timeout"
 
 module X509Sleuth
   class Client
-    attr_reader :host, :port, :timeout_secs
+    attr_reader :host, :port, :timeout_secs, :connect_error
 
     def initialize(host, options = {})
       options = {
@@ -26,9 +26,13 @@ module X509Sleuth
     end
 
     def connect
-      Timeout::timeout(@timeout_secs) do
-        ssl_socket.connect
-      end
+      Timeout::timeout(@timeout_secs) { ssl_socket.connect }
+    rescue SystemCallError, SocketError, OpenSSL::SSL::SSLError, Timeout::Error => e
+      @connect_error = e
+    end
+
+    def connect_failed?
+      connect_error ? true : false
     end
 
     def peer_certificate
