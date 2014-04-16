@@ -1,5 +1,6 @@
 require "x509_sleuth/version"
 require "x509_sleuth/client"
+require "x509_sleuth/scanner"
 
 module X509Sleuth
   class << self 
