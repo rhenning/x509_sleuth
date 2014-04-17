@@ -1,4 +1,5 @@
 require "x509_sleuth/scanner/target"
+require "parallel"
 
 module X509Sleuth
   class Scanner
@@ -28,7 +29,9 @@ module X509Sleuth
     end
 
     def run
-      clients.map(&:connect)
+      Parallel.each(clients, in_threads: concurrency) do |client|
+        client.connect
+      end
     end
   end
 end

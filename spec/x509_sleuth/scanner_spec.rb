@@ -72,5 +72,10 @@ describe X509Sleuth::Scanner do
       expect(client_double).to receive(:connect).exactly(2).times
       scanner.run
     end
+
+    it "executes with the correct concurrency" do
+      expect(Parallel).to receive(:each).with(scanner_clients, { in_threads: 5 })
+      scanner.run
+    end
   end
 end

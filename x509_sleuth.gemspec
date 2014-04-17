@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.files       = Dir.glob("lib/**/*.rb")
   s.test_files  = Dir.glob("spec/**/*.rb")
   s.add_runtime_dependency "netaddr"
+  s.add_runtime_dependency "parallel"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
   s.add_development_dependency "travis-lint"
