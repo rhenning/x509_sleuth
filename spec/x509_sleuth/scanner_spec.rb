@@ -73,8 +73,12 @@ describe X509Sleuth::Scanner do
       scanner.run
     end
 
-    it "executes with the correct concurrency" do
-      expect(Parallel).to receive(:each).with(scanner_clients, { in_threads: 5 })
+    it "scans the expected number of hosts in parallel" do
+      expect(Parallel).to receive(:each) do |arg1, arg2|
+        expect(arg1).to eq(scanner_clients)
+        expect(arg2).to include(in_threads: 5)
+      end
+
       scanner.run
     end
   end
