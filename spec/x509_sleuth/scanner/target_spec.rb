@@ -17,7 +17,7 @@ describe X509Sleuth::Scanner::Target do
   context "when target is an IPv4 address and CIDR subnet mask" do
     describe "#is_a_range?" do
       it "returns true" do
-        expect(cidr_target.is_a_range?).to be_true
+        expect(cidr_target.is_a_range?).to be true
       end
     end
 
@@ -36,7 +36,7 @@ describe X509Sleuth::Scanner::Target do
   context "when target is an IPv4 address and dotted-decimal subnet mask" do
     describe "#is_a_range?" do
       it "returns true" do
-        expect(ip_subnet_pair_target.is_a_range?).to be_true
+        expect(ip_subnet_pair_target.is_a_range?).to be true
       end
     end
 
@@ -58,7 +58,7 @@ describe X509Sleuth::Scanner::Target do
   context "when target is a single IPv4 address" do
     describe "#is_a_range?" do
       it "returns false" do
-        expect(ip_target.is_a_range?).to be_false
+        expect(ip_target.is_a_range?).to be false
       end
     end
 
@@ -73,7 +73,7 @@ describe X509Sleuth::Scanner::Target do
   context "when target is assumed to be a hostname" do
     describe "#is_a_range?" do
       it "returns false" do
-        expect(host_target.is_a_range?).to be_false
+        expect(host_target.is_a_range?).to be false
       end
     end
 

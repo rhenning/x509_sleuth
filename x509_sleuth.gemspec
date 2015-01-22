@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "netaddr"
   s.add_runtime_dependency "parallel"
   s.add_development_dependency "rake"
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec", "~> 3.1.0"
+  s.add_development_dependency "rspec-collection_matchers", "~> 1.1.2"
   s.add_development_dependency "travis-lint"
 end

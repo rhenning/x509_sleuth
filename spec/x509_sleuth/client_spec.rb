@@ -28,17 +28,21 @@ describe X509Sleuth::Client do
     #it { should respond_to(:peer_certificate_expiration_time) }
 
     context "with no options" do
-      its(:host) { should eq(host) }
-      its(:port) { should eq(443) }
-      its(:timeout_secs) { should eq(15) }
+      it "returns defaults" do
+        expect(subject.host).to eq(host)
+        expect(subject.port).to eq(443)
+        expect(subject.timeout_secs).to eq(15)
+      end
     end
 
     context "with options" do
       subject { described_class.new(host, port: 40443, timeout_secs: 3) }
 
-      its(:host) { should eq(host) }
-      its(:port) { should eq(40443) }
-      its(:timeout_secs) { should eq(3) }
+      it "returns options" do
+        expect(subject.host).to eq(host)
+        expect(subject.port).to eq(40443)
+        expect(subject.timeout_secs).to eq(3)
+      end
     end
   end
 
