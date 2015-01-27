@@ -25,8 +25,9 @@ describe X509Sleuth::Scanner do
 
     context "with option overrides" do
       subject { scanner_with_overrides }
-
-      its(:concurrency) { should eq(127) }
+      it "returns overrides" do
+        expect(subject.concurrency).to eq(127)
+      end
     end
   end
 
