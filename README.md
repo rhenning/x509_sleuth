@@ -25,3 +25,7 @@ You should see output similar to:
 +----------------+--------------------------------------------------------------------+---------------------+-------------------------+-------------------------+
 ```
 
+# Contributors
+
+* [Richard Henning](https://github.com/rhenning)
+* [Travis Truman](https://github.com/trumant)
