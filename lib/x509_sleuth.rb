@@ -1,5 +1,6 @@
 require "x509_sleuth/client"
 require "x509_sleuth/scanner"
+require "x509_sleuth/scanner_detailed_presenter"
 require "x509_sleuth/scanner_presenter"
 require "x509_sleuth/version"
 

@@ -19,7 +19,7 @@ describe X509Sleuth::ScannerPresenter do
   end
 
   let(:ok_client_double) do
-    double(
+    instance_double(
       X509Sleuth::Client,
       host:             "ok.client.tld",
       connect_failed?:  false,
@@ -28,11 +28,12 @@ describe X509Sleuth::ScannerPresenter do
   end
 
   let(:failed_client_double) do
-    double(
+    instance_double(
       X509Sleuth::Client,
       host:             "failed.client.tld",
       connect_failed?:  true,
-      connect_error:    TimeoutError.new
+      connect_error:    TimeoutError.new,
+      peer_certificate: nil
     )
   end
 
@@ -49,8 +50,17 @@ describe X509Sleuth::ScannerPresenter do
     subject { scanner_presenter }
 
     it { should respond_to(:scanner).with(0).arguments }
-    it { should respond_to(:tableize).with(0).arguments }
+    it { should respond_to(:tableize).with(1).argument }
+    it { should respond_to(:filter).with(0).arguments }
     it { should respond_to(:to_s).with(0).arguments }
+  end
+
+  describe "#filter" do 
+    it "removes failed clients" do
+      filtered = scanner_presenter.filter()
+      expect(filtered).to include(ok_client_double)
+      expect(filtered).to_not include(failed_client_double)
+    end
   end
 
   describe "#tableize" do
@@ -74,11 +84,11 @@ describe X509Sleuth::ScannerPresenter do
     end
 
     it "returns the expected Formatador table" do
-      expect(scanner_presenter.tableize).to include(ok_client_tableized_result)
+      expect(scanner_presenter.tableize(scanner_double.clients())).to include(ok_client_tableized_result)
     end
 
     it "excludes clients with failed connections" do
-      expect(scanner_presenter.tableize).to_not include(failed_client_tableized_result)
+      expect(scanner_presenter.tableize(scanner_presenter.filter())).to_not include(failed_client_tableized_result)
     end
   end
 end
