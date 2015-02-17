@@ -1,3 +1,4 @@
 source "http://www.rubygems.org"
 
 gem 'x509_sleuth'
+gem 'pry'

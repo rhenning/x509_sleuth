@@ -1,6 +1,11 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'x509_sleuth/version'
+
+
 Gem::Specification.new do |s|
   s.name        = "x509_sleuth"
-  s.version     = "0.0.1"
+  s.version     = X509Sleuth::VERSION
   s.date        = "2014-04-11"
   s.summary     = "A tool to remotely scan for and investigate X.509 certificates used in SSL/TLS"
   s.author      = "Richard Henning"
