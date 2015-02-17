@@ -9,9 +9,12 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/rhenning/x509_sleuth"
   s.files       = Dir.glob("lib/**/*.rb")
   s.test_files  = Dir.glob("spec/**/*.rb")
+  
   s.add_runtime_dependency "formatador"
   s.add_runtime_dependency "netaddr"
   s.add_runtime_dependency "parallel"
+  s.add_runtime_dependency "thor"
+
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec", "~> 3.1.0"
   s.add_development_dependency "rspec-collection_matchers", "~> 1.1.2"

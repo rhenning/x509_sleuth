@@ -1,3 +1,4 @@
+require "x509_sleuth/cli"
 require "x509_sleuth/client"
 require "x509_sleuth/scanner"
 require "x509_sleuth/scanner_presenter"
