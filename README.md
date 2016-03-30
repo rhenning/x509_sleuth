@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/rhenning/x509_sleuth.svg?branch=master)](https://travis-ci.org/rhenning/x509_sleuth)
+[![Gem Version](https://badge.fury.io/rb/x509_sleuth.svg)](https://badge.fury.io/rb/x509_sleuth)
 
 # x509_sleuth
 
