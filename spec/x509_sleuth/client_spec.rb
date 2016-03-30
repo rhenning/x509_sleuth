@@ -9,6 +9,7 @@ describe X509Sleuth::Client do
   before do
     allow(TCPSocket).to receive(:new).and_return(tcp_socket_double)
     allow(OpenSSL::SSL::SSLSocket).to receive(:new).and_return(ssl_socket_double)
+    allow(ssl_socket_double).to receive(:hostname=)
   end
 
   context "when initialized" do

@@ -23,6 +23,8 @@ module X509Sleuth
 
     def ssl_socket
       @ssl_socket ||= OpenSSL::SSL::SSLSocket.new(tcp_socket)
+      @ssl_socket.hostname = @host
+      @ssl_socket
     end
 
     def connect
